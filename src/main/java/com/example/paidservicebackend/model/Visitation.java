@@ -5,7 +5,7 @@ import java.util.Date;
 public class Visitation {
     private Integer id;
     private Person patient;
-    private Doctor doctor;
+    private Staff staff;
     private MedicalService medicalService;
     private Date date;
 
@@ -25,12 +25,12 @@ public class Visitation {
         this.patient = patient;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public Staff getStaff() {
+        return staff;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setStaff(Staff staff) {
+        this.staff = staff;
     }
 
     public MedicalService getMedicalService() {

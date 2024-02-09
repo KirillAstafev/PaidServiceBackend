@@ -1,8 +1,9 @@
 package com.example.paidservicebackend.model;
 
-public class Doctor {
+public class Staff {
     private Integer id;
     private Person person;
+    private User user;
     private String speciality;
 
     public Integer getId() {

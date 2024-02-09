@@ -5,7 +5,7 @@ import java.util.Date;
 public class MedicalRecord {
     private Integer id;
     private Person patient;
-    private Doctor doctor;
+    private Staff staff;
     private Date date;
     private Diagnosis diagnosis;
     private String note;
@@ -26,12 +26,12 @@ public class MedicalRecord {
         this.patient = patient;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public Staff getStaff() {
+        return staff;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setStaff(Staff staff) {
+        this.staff = staff;
     }
 
     public Date getDate() {
