@@ -1,12 +1,13 @@
 package com.example.paidservicebackend.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class MedicalRecord {
     private Integer id;
     private Person patient;
     private Staff staff;
-    private Date date;
+    private LocalDate date;
     private Diagnosis diagnosis;
     private String note;
 
@@ -34,11 +35,11 @@ public class MedicalRecord {
         this.staff = staff;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

@@ -1,5 +1,6 @@
 package com.example.paidservicebackend.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Visitation {
@@ -7,7 +8,7 @@ public class Visitation {
     private Person patient;
     private Staff staff;
     private MedicalService medicalService;
-    private Date date;
+    private LocalDateTime dateTime;
 
     public Integer getId() {
         return id;
@@ -41,11 +42,11 @@ public class Visitation {
         this.medicalService = medicalService;
     }
 
-    public Date getDate() {
-        return date;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 }
