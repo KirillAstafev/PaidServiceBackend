@@ -1,7 +1,6 @@
 package com.example.paidservicebackend.model;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Visitation {
     private Integer id;
