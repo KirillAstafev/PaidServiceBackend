@@ -1,10 +1,12 @@
 package com.example.paidservicebackend.model;
 
+import java.util.List;
+
 public class Staff {
     private Integer id;
     private Person person;
     private User user;
-    private String speciality;
+    private List<Speciality> specialities;
 
     public Integer getId() {
         return id;
@@ -22,11 +24,19 @@ public class Staff {
         this.person = person;
     }
 
-    public String getSpeciality() {
-        return speciality;
+    public User getUser() {
+        return user;
     }
 
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Speciality> getSpecialities() {
+        return specialities;
+    }
+
+    public void setSpecialities(List<Speciality> specialities) {
+        this.specialities = specialities;
     }
 }
