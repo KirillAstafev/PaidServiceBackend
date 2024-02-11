@@ -1,1 +1,6 @@
-
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: # url базы данных
+    username:
+    password:
