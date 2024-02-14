@@ -4,3 +4,6 @@ spring:
     url: # url базы данных
     username:
     password:
+server:
+  servlet:
+    context-path: paid-services
