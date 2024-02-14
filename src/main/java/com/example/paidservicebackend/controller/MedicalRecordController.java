@@ -1,0 +1,37 @@
+package com.example.paidservicebackend.controller;
+
+import com.example.paidservicebackend.model.MedicalRecord;
+import com.example.paidservicebackend.service.MedicalRecordService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/records")
+public class MedicalRecordController {
+    private final MedicalRecordService medicalRecordService;
+
+    public MedicalRecordController(MedicalRecordService medicalRecordService) {
+        this.medicalRecordService = medicalRecordService;
+    }
+
+    @GetMapping
+    public List<MedicalRecord> findByPatientId(@RequestParam Integer patientId) {
+        return medicalRecordService.findByPatientId(patientId);
+    }
+
+    @PostMapping
+    public Integer save(@RequestBody MedicalRecord record) {
+        return medicalRecordService.save(record);
+    }
+
+    @PutMapping("/{id}")
+    public void update(@RequestBody MedicalRecord record) {
+        medicalRecordService.update(record);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id) {
+        medicalRecordService.delete(id);
+    }
+}
