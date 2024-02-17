@@ -6,4 +6,4 @@ spring:
     password:
 server:
   servlet:
-    context-path: paid-services
+    context-path: /paid-services
