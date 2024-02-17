@@ -1,5 +1,6 @@
-package com.example.paidservicebackend.repository.mapper;
+package com.example.paidservicebackend.repository.impl.mapper;
 
+import com.example.paidservicebackend.model.Diagnosis;
 import com.example.paidservicebackend.model.MedicalRecord;
 import com.example.paidservicebackend.model.builder.DiagnosisBuilder;
 import com.example.paidservicebackend.model.builder.MedicalRecordBuilder;
@@ -36,5 +37,11 @@ public final class Mapper {
                     .code(rs.getString("diagnosis_code"))
                     .name(rs.getString("diagnosis_name"))
                     .build())
+            .build();
+
+    public static final RowMapper<Diagnosis> DIAGNOSIS_MAPPER = (rs, rowNum) -> DiagnosisBuilder.builder()
+            .id(rs.getInt("diagnosis_id"))
+            .code(rs.getString("diagnosis_code"))
+            .name(rs.getString("diagnosis_name"))
             .build();
 }
