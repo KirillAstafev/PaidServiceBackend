@@ -2,7 +2,7 @@ package com.example.paidservicebackend.controller;
 
 
 import com.example.paidservicebackend.model.Staff;
-import com.example.paidservicebackend.service.StaffService;
+import com.example.paidservicebackend.service.staff.StaffService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

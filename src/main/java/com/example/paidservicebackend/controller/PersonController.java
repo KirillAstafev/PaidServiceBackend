@@ -1,7 +1,7 @@
 package com.example.paidservicebackend.controller;
 
 import com.example.paidservicebackend.model.Person;
-import com.example.paidservicebackend.service.PersonService;
+import com.example.paidservicebackend.service.person.PersonService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

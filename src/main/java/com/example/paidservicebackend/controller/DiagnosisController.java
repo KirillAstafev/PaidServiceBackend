@@ -1,7 +1,7 @@
 package com.example.paidservicebackend.controller;
 
 import com.example.paidservicebackend.model.Diagnosis;
-import com.example.paidservicebackend.service.DiagnosisService;
+import com.example.paidservicebackend.service.diagnosis.DiagnosisService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
