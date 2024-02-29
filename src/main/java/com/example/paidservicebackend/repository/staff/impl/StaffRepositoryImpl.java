@@ -63,6 +63,7 @@ public class StaffRepositoryImpl implements StaffRepository {
         return keyHolder.getKeyAs(Integer.class);
     }
 
+    //@todo реализовать update
     @Override
     public void update(Staff staff) {
 
