@@ -24,11 +24,6 @@ public class StaffController {
         return staffService.save(staff);
     }
 
-    @PutMapping("/{id}")
-    public void update(@RequestBody Staff staff) {
-        staffService.update(staff);
-    }
-
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id) {
         staffService.delete(id);

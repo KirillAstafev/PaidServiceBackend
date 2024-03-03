@@ -25,11 +25,6 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
-    public void update(Staff staff) {
-        staffRepository.update(staff);
-    }
-
-    @Override
     public void delete(Integer staffId) {
         staffRepository.delete(staffId);
     }
