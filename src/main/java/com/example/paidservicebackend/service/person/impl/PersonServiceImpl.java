@@ -1,5 +1,6 @@
 package com.example.paidservicebackend.service.person.impl;
 
+import com.example.paidservicebackend.exception.PersonNotFoundException;
 import com.example.paidservicebackend.model.Person;
 import com.example.paidservicebackend.repository.person.PersonRepository;
 import com.example.paidservicebackend.service.person.PersonService;
@@ -16,7 +17,7 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public Person findBySnils(String snils) {
         return personRepository.findBySnils(snils)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new PersonNotFoundException("Ошибка! Пациент с номером СНИЛС '%s' не найден!".formatted(snils)));
     }
 
     @Override
