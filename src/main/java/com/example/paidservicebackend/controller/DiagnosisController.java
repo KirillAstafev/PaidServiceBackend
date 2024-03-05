@@ -2,10 +2,12 @@ package com.example.paidservicebackend.controller;
 
 import com.example.paidservicebackend.model.Diagnosis;
 import com.example.paidservicebackend.service.diagnosis.DiagnosisService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "Контроллер диагнозов", description = "Работа с мед.диагнозами (классификация МКБ-10)")
 @RestController
 @RequestMapping("/diagnoses")
 public class DiagnosisController {
