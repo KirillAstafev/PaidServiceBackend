@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Контроллер физ.лиц", description = "Работа с персональными данными физ.лиц")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/persons")
 public class PersonController {

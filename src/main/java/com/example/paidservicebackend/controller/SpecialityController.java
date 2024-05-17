@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Tag(name = "Контроллер специальностей", description = "Работа с реестром мед.специальностей")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/specialities")
 public class SpecialityController {

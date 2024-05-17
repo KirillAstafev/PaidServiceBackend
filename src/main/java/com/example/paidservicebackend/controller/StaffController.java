@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Контроллер мед.персонала", description = "Работа с данными мед.персонала клиники")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/staffs")
 public class StaffController {
