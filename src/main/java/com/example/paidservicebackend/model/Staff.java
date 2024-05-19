@@ -1,12 +1,13 @@
 package com.example.paidservicebackend.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Staff {
     private Integer id;
     private Person person;
     private User user;
-    private List<Speciality> specialities;
+    private List<Speciality> specialities = new ArrayList<>();
 
     public Integer getId() {
         return id;

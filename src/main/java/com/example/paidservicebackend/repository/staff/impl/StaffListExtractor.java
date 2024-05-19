@@ -12,17 +12,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
-final class SingleStaffExtractor implements ResultSetExtractor<Staff> {
+public class StaffListExtractor implements ResultSetExtractor<List<Staff>> {
     @Override
-    public Staff extractData(ResultSet rs) throws SQLException, DataAccessException {
+    public List<Staff> extractData(ResultSet rs) throws SQLException, DataAccessException {
         Map<Integer, Staff> staffMap = new HashMap<>();
-        Integer staffId = null;
 
         while (rs.next()) {
-            staffId = rs.getInt("staff_id");
+            Integer staffId = rs.getInt("staff_id");
 
             if (!staffMap.containsKey(staffId)) {
                 Staff newStaff = StaffBuilder.builder()
@@ -49,6 +49,6 @@ final class SingleStaffExtractor implements ResultSetExtractor<Staff> {
                     .build());
         }
 
-        return staffMap.get(staffId);
+        return staffMap.values().stream().toList();
     }
 }

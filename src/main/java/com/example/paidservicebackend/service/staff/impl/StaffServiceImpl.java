@@ -5,12 +5,19 @@ import com.example.paidservicebackend.repository.staff.StaffRepository;
 import com.example.paidservicebackend.service.staff.StaffService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StaffServiceImpl implements StaffService {
     private final StaffRepository staffRepository;
 
     public StaffServiceImpl(StaffRepository staffRepository) {
         this.staffRepository = staffRepository;
+    }
+
+    @Override
+    public List<Staff> findAll() {
+        return staffRepository.findAll();
     }
 
     @Override

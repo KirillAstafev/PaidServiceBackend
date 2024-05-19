@@ -6,6 +6,8 @@ import com.example.paidservicebackend.service.staff.StaffService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Tag(name = "Контроллер мед.персонала", description = "Работа с данными мед.персонала клиники")
 @CrossOrigin("*")
 @RestController
@@ -15,6 +17,11 @@ public class StaffController {
 
     public StaffController(StaffService staffService) {
         this.staffService = staffService;
+    }
+
+    @GetMapping
+    public List<Staff> findAll() {
+        return staffService.findAll();
     }
 
     @GetMapping("/{id}")

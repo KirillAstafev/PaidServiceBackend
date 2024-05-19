@@ -8,16 +8,40 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public class StaffRepositoryImpl implements StaffRepository {
     private final NamedParameterJdbcTemplate jdbcTemplate;
-    private final SingleStaffExtractor extractor;
+    private final SingleStaffExtractor singleStaffExtractor;
+    private final StaffListExtractor staffListExtractor;
 
-    public StaffRepositoryImpl(NamedParameterJdbcTemplate jdbcTemplate, SingleStaffExtractor extractor) {
+    public StaffRepositoryImpl(NamedParameterJdbcTemplate jdbcTemplate, SingleStaffExtractor singleStaffExtractor, StaffListExtractor staffListExtractor) {
         this.jdbcTemplate = jdbcTemplate;
-        this.extractor = extractor;
+        this.singleStaffExtractor = singleStaffExtractor;
+        this.staffListExtractor = staffListExtractor;
+    }
+
+    @Override
+    public List<Staff> findAll() {
+        String sql = """
+                SELECT staff.id            AS staff_id,
+                       person.id           AS staff_person_id,
+                       person.first_name   AS staff_person_first_name,
+                       person.middle_name  AS staff_person_middle_name,
+                       person.last_name    AS staff_person_last_name,
+                       person.snils        AS staff_person_snils,
+                       person.phone_number AS staff_person_phone_number,
+                       speciality.id       AS staff_speciality_id,
+                       speciality.name     AS staff_speciality_name
+                FROM staff
+                         INNER JOIN person ON staff.person_id = person.id
+                         INNER JOIN staff_speciality ON staff.id = staff_speciality.staff_id
+                         INNER JOIN speciality ON staff_speciality.speciality_id = speciality.id
+                """;
+
+        return jdbcTemplate.query(sql, staffListExtractor);
     }
 
     @Override
@@ -31,7 +55,7 @@ public class StaffRepositoryImpl implements StaffRepository {
                        person.snils        AS staff_person_snils,
                        person.phone_number AS staff_person_phone_number,
                        speciality.id       AS staff_speciality_id,
-                       speciality.name     AS staff_speciality_id
+                       speciality.name     AS staff_speciality_name
                 FROM staff
                          INNER JOIN person ON staff.person_id = person.id
                          INNER JOIN staff_speciality ON staff.id = staff_speciality.staff_id
@@ -42,7 +66,7 @@ public class StaffRepositoryImpl implements StaffRepository {
         MapSqlParameterSource param = new MapSqlParameterSource()
                 .addValue("id", id);
 
-        return Optional.ofNullable(jdbcTemplate.query(sql, param, extractor));
+        return Optional.ofNullable(jdbcTemplate.query(sql, param, singleStaffExtractor));
     }
 
     @Override
