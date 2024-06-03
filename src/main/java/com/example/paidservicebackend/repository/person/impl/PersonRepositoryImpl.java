@@ -2,12 +2,15 @@ package com.example.paidservicebackend.repository.person.impl;
 
 import com.example.paidservicebackend.model.Person;
 import com.example.paidservicebackend.repository.person.PersonRepository;
+import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Types;
 import java.util.Optional;
 
 @Repository
@@ -85,14 +88,15 @@ public class PersonRepositoryImpl implements PersonRepository {
 
     @Override
     public void delete(Integer personId) {
-        String sql = """
-                DELETE FROM person
-                WHERE id = :id
-                """;
+        SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate.getJdbcTemplate())
+                .withProcedureName("DELETE_CLIENT_INFO")
+                .declareParameters(
+                        new SqlParameter("target_patient_id", Types.INTEGER)
+                );
 
         MapSqlParameterSource param = new MapSqlParameterSource()
-                .addValue("id", personId);
+                .addValue("target_patient_id", personId);
 
-        jdbcTemplate.update(sql, param);
+        call.execute(param);
     }
 }
